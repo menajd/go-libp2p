@@ -24,6 +24,8 @@ const (
 	Secp256k1
 	// ECDSA is an enum for the supported ECDSA key type
 	ECDSA
+	// ECDSA is an enum for the supported ECDSA key type
+	BLS
 )
 
 var (
@@ -35,6 +37,7 @@ var (
 		Ed25519,
 		Secp256k1,
 		ECDSA,
+		BLS,
 	}
 )
 
@@ -50,6 +53,7 @@ var PubKeyUnmarshallers = map[pb.KeyType]PubKeyUnmarshaller{
 	pb.KeyType_Ed25519:   UnmarshalEd25519PublicKey,
 	pb.KeyType_Secp256k1: UnmarshalSecp256k1PublicKey,
 	pb.KeyType_ECDSA:     UnmarshalECDSAPublicKey,
+	pb.KeyType_BLS:       UnmarshalBLSPublicKey,
 }
 
 // PrivKeyUnmarshallers is a map of unmarshallers by key type
@@ -58,6 +62,7 @@ var PrivKeyUnmarshallers = map[pb.KeyType]PrivKeyUnmarshaller{
 	pb.KeyType_Ed25519:   UnmarshalEd25519PrivateKey,
 	pb.KeyType_Secp256k1: UnmarshalSecp256k1PrivateKey,
 	pb.KeyType_ECDSA:     UnmarshalECDSAPrivateKey,
+	pb.KeyType_BLS:       UnmarshalBLSPrivateKey,
 }
 
 // Key represents a crypto key that can be compared to another key
@@ -113,6 +118,8 @@ func GenerateKeyPairWithReader(typ, bits int, src io.Reader) (PrivKey, PubKey, e
 		return GenerateSecp256k1Key(src)
 	case ECDSA:
 		return GenerateECDSAKeyPair(src)
+	case BLS:
+		return GenerateBLSKeyPair(src)
 	default:
 		return nil, nil, ErrBadKeyType
 	}

@@ -7,11 +7,12 @@
 package pb
 
 import (
-	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
-	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
+
+	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
+	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 )
 
 const (
@@ -28,6 +29,7 @@ const (
 	KeyType_Ed25519   KeyType = 1
 	KeyType_Secp256k1 KeyType = 2
 	KeyType_ECDSA     KeyType = 3
+	KeyType_BLS       KeyType = 4
 )
 
 // Enum value maps for KeyType.
@@ -37,12 +39,14 @@ var (
 		1: "Ed25519",
 		2: "Secp256k1",
 		3: "ECDSA",
+		4: "BLS",
 	}
 	KeyType_value = map[string]int32{
 		"RSA":       0,
 		"Ed25519":   1,
 		"Secp256k1": 2,
 		"ECDSA":     3,
+		"BLS":       4,
 	}
 )
 

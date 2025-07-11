@@ -8,6 +8,7 @@ retract v0.36.0 // Accidentally modified the tag.
 
 require (
 	github.com/benbjohnson/clock v1.3.5
+	github.com/cloudflare/circl v1.6.1
 	github.com/davidlazar/go-crypto v0.0.0-20200604182044-b73af7476f6c
 	github.com/decred/dcrd/dcrec/secp256k1/v4 v4.4.0
 	github.com/flynn/noise v1.1.0
