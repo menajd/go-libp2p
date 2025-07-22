@@ -33,7 +33,7 @@ var (
 // be set to false by default when an upgrade path is determined.
 var AdvancedEnableInlining = true
 
-const maxInlineKeyLength = 42
+const maxInlineKeyLength = 52
 
 // ID is a libp2p peer identity.
 //

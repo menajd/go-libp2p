@@ -91,7 +91,7 @@ func (k *BLSPublicKey) Verify(data []byte, sig []byte) (success bool, err error)
 
 // UnmarshalBLSPublicKey returns a public key from input bytes.
 func UnmarshalBLSPublicKey(data []byte) (PubKey, error) {
-	prv := &BLSPublicKey{}
+	prv := &BLSPublicKey{p: &bls.PublicKey[bls.KeyG1SigG2]{} }
 
 	err := prv.p.UnmarshalBinary(data)
 	if err != nil {
@@ -102,7 +102,7 @@ func UnmarshalBLSPublicKey(data []byte) (PubKey, error) {
 
 // UnmarshalBLSPrivateKey returns a private key from input bytes.
 func UnmarshalBLSPrivateKey(data []byte) (PrivKey, error) {
-	prv := &BLSPrivateKey{}
+	prv := &BLSPrivateKey{s : &bls.PrivateKey[bls.KeyG1SigG2]{}}
 
 	err := prv.s.UnmarshalBinary(data)
 	if err != nil {
